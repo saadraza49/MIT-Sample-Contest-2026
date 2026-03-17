@@ -1,13 +1,10 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-
 const int MOD = 998244353;
 const int MAXN = 3005;
-
 long long fact[MAXN], invFact[MAXN];
 
-// Computes (base^exp) % MOD
 long long power(long long base, long long exp) {
     long long res = 1;
     base %= MOD;
@@ -19,12 +16,11 @@ long long power(long long base, long long exp) {
     return res;
 }
 
-// Computes modular inverse
+
 long long modInverse(long long n) {
     return power(n, MOD - 2);
 }
 
-// Precomputes factorials and their modular inverses for O(1) combinations
 void precompute() {
     fact[0] = 1;
     invFact[0] = 1;
@@ -37,7 +33,7 @@ void precompute() {
     }
 }
 
-// O(1) Combination nCr
+
 long long nCr(int n, int r) {
     if (r < 0 || r > n) return 0;
     return fact[n] * invFact[r] % MOD * invFact[n - r] % MOD;
@@ -49,19 +45,16 @@ int color[MAXN];
 int parent_node[MAXN];
 vector<int> order;
 
-// Establishes tree parent relationships, post-order traversal, and bipartite coloring
-void dfs_setup(int u, int p, int c) {
-    color[u] = c;
     parent_node[u] = p;
     for (int v : adj[u]) {
         if (v != p) {
             dfs_setup(v, u, 1 - c);
         }
     }
-    order.push_back(u); // Naturally yields a bottom-up post-order
+    order.push_back(u); 
 }
 
-// Solves the DP for a specific alternating orientation limit
+
 long long count_ways(int orientation) {
     vector<vector<long long>> dp(N + 1);
     vector<int> sz(N + 1, 1);
