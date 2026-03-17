@@ -17,7 +17,7 @@ def solve():
 
     par = list(range(N))
     rnk = [0] * N
-    rel = [0] * N  # parity relative to parent in DSU tree
+    rel = [0] * N 
 
     def find(x):
         path = []

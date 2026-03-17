@@ -6,7 +6,7 @@ using namespace std;
 struct Edge {
     int u, v, t;
     bool operator<(const Edge& other) const {
-        return t > other.t; // Sort descending
+        return t > other.t; // SORT DESCENDING
     }
 };
 

@@ -3,7 +3,7 @@ for _ in range(Q):
     s = input()
     n = len(s)
     found = False
-    # A + B + B, len = a + 2b, a>=1, b>=1
+    
     for b in range(1, n // 2 + 1):
         a = n - 2 * b
         if a < 1:

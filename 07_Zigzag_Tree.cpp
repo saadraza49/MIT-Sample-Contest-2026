@@ -59,7 +59,6 @@ long long count_ways(int orientation) {
     vector<vector<long long>> dp(N + 1);
     vector<int> sz(N + 1, 1);
     
-    // Base case: Size 1 subtree, 1 way to assign relative rank 1
     for (int i = 1; i <= N; i++) {
         dp[i] = {0, 1}; 
     }
@@ -93,7 +92,6 @@ long long count_ways(int orientation) {
             A[i] = dp[p][i] * nCr(sz_p - 1, i - 1) % MOD;
         }
         
-        // Decoupled convolution
         int S_total = sz_p + sz_u;
         vector<long long> C_poly(S_total + 1, 0);
         
